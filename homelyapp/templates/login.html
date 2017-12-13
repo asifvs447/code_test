@@ -1,0 +1,22 @@
+{%  extends "base.html" %}
+{% block header %}
+    <title>User Login</title>
+{% endblock %}
+{% block body %}
+    <div>
+    <form method="post">
+        <h2>Please sign in</h2>
+        {% csrf_token %}
+        <div>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+        </div>
+        <div>
+  <td>{{ form.password.label_tag }}</td>
+  <td>{{ form.password }}</td>
+</div>
+        <button class="btn btn-block" type="submit">sign in</button>
+    </form>
+</div>
+
+{% endblock %}

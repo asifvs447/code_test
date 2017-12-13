@@ -1,0 +1,9 @@
+{%  extends "base.html" %}
+{% block header %}
+    <title>Home</title>
+{% endblock %}
+{% block body %}
+<h1>Welcome to Homely</h1>
+<h4><a href="{% url 'homelyapp:register' %}">Register</a></h4>
+<h4><a href="{% url 'homelyapp:login' %}">User Login</a></h4>
+{% endblock %}

@@ -1,0 +1,9 @@
+{%  extends "base.html" %}
+{% block header %}
+    <title>Home</title>
+{% endblock %}
+{% block body %}
+{% for prop in rented_properties %}
+    <h4>{{ prop }}</h4>
+    {% endfor %}
+{% endblock %}

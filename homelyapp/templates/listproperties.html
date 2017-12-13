@@ -1,0 +1,45 @@
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 25px;
+    text-align: left;
+}
+table#t01 {
+    width: 100%;
+    background-color: #f1f1c1;
+}
+</style>
+{%  extends "base.html" %}
+{% block header %}
+    <title>List properties</title>
+{% endblock %}
+{% block body %}
+    {% if list_houses %}
+         <table>
+             <tr>
+                 <th>House Name</th>
+                 <th>House Address</th>
+                 <th>Edit</th>
+                 <th>Delete</th>
+             </tr>
+             {% for house in list_houses %}
+                 <tr>
+                     <td>{{ house.house_name }}</td>
+                     <td>{{ house.house_address }}</td>
+                     <td> <a href="{% url 'homelyapp:editproperty' house.id %}">Edit</a> </td>
+                     <td>
+                        <form method="POST" action="{% url "homelyapp:deleteproperty" house.id %}">
+                        {% csrf_token %}
+                            <input type="submit" value="delete">
+                        </form>
+                     </td>
+                 </tr>
+             {% endfor %}
+         {% else %}
+             <h4>There are no added properties</h4>
+         </table>
+    {% endif %}
+{% endblock %}

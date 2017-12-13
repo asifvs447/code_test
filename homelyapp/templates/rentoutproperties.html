@@ -1,0 +1,41 @@
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 25px;
+    text-align: left;
+}
+table#t01 {
+    width: 100%;
+    background-color: #f1f1c1;
+}
+</style>
+
+{%  extends "base.html" %}
+{% block header %}
+    <title>Avail Properties</title>
+{% endblock %}
+{% block body %}
+<h3>Welcome to Homely Rental</h3>
+    <h4>Following are all the available rental properties listed</h4>
+    {% if all_properties %}
+         <table>
+             <tr>
+                 <th>House Name</th>
+                 <th>House Address</th>
+                 <th>Book</th>
+             </tr>
+             {% for house in all_properties %}
+                 <tr>
+                     <td>{{ house.house_name }}</td>
+                     <td>{{ house.house_address }}</td>
+                     <td><a href="{% url 'homelyapp:rentproperty' house.id%}">Rent it</a></td>
+                 </tr>
+             {% endfor %}
+         {% else %}
+             <h4>There are no properties avail for rent </h4>
+         </table>
+    {% endif %}
+{% endblock %}
